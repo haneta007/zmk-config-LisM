@@ -35,8 +35,8 @@ layers:
   - LEFT WIN
   - $$mdi:apple-keyboard-option$$
   - $$mdi:pan-up$$
-  - {t: INTERNATIONAL 4, h: Number Layer}
   - {t: '$$mdi:keyboard-space$$', h: Mark Layer}
+  - {t: INTERNATIONAL 4, h: Number Layer}
   - {t: '$$mdi:backspace$$', h: Mark Layer}
   - {t: '$$mdi:keyboard-return$$', h: Mouse Layer}
   - $$mdi:pan-up$$
@@ -133,8 +133,8 @@ layers:
   - .
   - '0'
   - $$mdi:arrow-up-bold$$
-  - {t: LANG2, type: held}
-  - {t: ▽, type: trans}
+  - LANG2
+  - {type: held}
   - {t: ▽, type: trans}
   - Sft+SEMI
   - $$mdi:arrow-up-bold$$
@@ -182,8 +182,8 @@ layers:
   - {t: ▽, type: trans}
   - '0'
   - {t: ▽, type: trans}
-  - $$mdi:keyboard-space$$
-  - {type: held}
+  - {t: '$$mdi:keyboard-space$$', type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - {t: ▽, type: trans}
