@@ -1,0 +1,7 @@
+config LISM_INPUT_PROCESSOR_POINTER_ACCEL
+    bool "LisM pointer acceleration input processor"
+    default y
+    depends on DT_HAS_LISM_INPUT_PROCESSOR_POINTER_ACCEL_ENABLED
+    help
+      Scale relative pointer movement from a base CPI to a maximum effective
+      CPI according to the size of each movement event.

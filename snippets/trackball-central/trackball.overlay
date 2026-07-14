@@ -2,6 +2,16 @@
     chosen {
         zmk,kscan = &kscan1;
     };
+
+    lism_pointer_accel: lism_pointer_accel {
+        compatible = "lism,input-processor-pointer-accel";
+        #input-processor-cells = <0>;
+        base-cpi = <608>;
+        max-cpi = <1000>;
+        accel-start = <2>;
+        accel-full = <12>;
+        track-remainders;
+    };
 };
 
 &spi0 {
@@ -21,7 +31,8 @@
 &peripheral_listener {
     status = "okay";
     input-processors =
-        <&zip_temp_layer 1 1500>;
+        <&zip_temp_layer 1 1500>,
+        <&lism_pointer_accel>;
 };
 
 // セントラルのリスナーを有効化し、deviceを紐付け
@@ -30,6 +41,7 @@
     device = <&trackball_central>;
     input-processors = 
         <&zip_temp_layer 1 1500>,
+        <&lism_pointer_accel>,
         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
 
     scroller {

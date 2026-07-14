@@ -21,6 +21,7 @@ DYA Studio対応版は[dya-studio_zmk-v0.3](https://github.com/4mplelab/zmk-conf
 | `settings_reset-seeeduino_xiao_ble-zmk.uf2`   | 設定リセット用                        |
 
 トラックボール版では、トラックボール操作中に Mouse Layer が自動で有効になり、最後の入力から約1.5秒後に解除されます。
+ポインター速度は小さい動きでは608 CPI相当を維持し、移動量に応じて最大約1000 CPI相当まで滑らかに加速します。
 
 ## ローカルビルド手順
 
