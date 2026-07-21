@@ -31,7 +31,7 @@
 &peripheral_listener {
     status = "okay";
     input-processors =
-        <&zip_temp_layer 1 1500>,
+        <&zip_temp_layer 1 1000>,
         <&lism_pointer_accel>;
 };
 
@@ -40,7 +40,7 @@
     status = "okay";
     device = <&trackball_central>;
     input-processors = 
-        <&zip_temp_layer 1 1500>,
+        <&zip_temp_layer 1 1000>,
         <&lism_pointer_accel>,
         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
 

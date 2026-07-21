@@ -1,6 +1,6 @@
 # LisM ZMK作業 引き継ぎ書
 
-更新日: 2026-07-21
+更新日: 2026-07-22
 
 ## 1. 最初に確認する場所
 
@@ -26,11 +26,12 @@ git pull --ff-only
 ### トラックボール操作中のMouse Layer自動切替
 
 - トラックボール入力があると `Mouse Layer` (`layer_1`) を自動で有効化する。
-- 最後の入力から1500ms後に自動解除する。
+- 最後の入力から1000ms後に自動解除する。
 - 右中央トラックボールと左ペリフェラルから届く入力の両方に適用済み。
 - 実装場所: `snippets/trackball-central/trackball.overlay`
-- 使用機能: `&zip_temp_layer 1 1500`
+- 使用機能: `&zip_temp_layer 1 1000`
 - Number Layer (`layer_2`) のスクロール変換は既存のまま優先される。
+- DYA Studio版では `rmouse` / `lmouse` のランタイム入力プロセッサーが同じ既定値を持ち、解除時間・対象レイヤー・有効/無効を変更できる。
 
 ### トラックボールの可変速度
 
@@ -45,6 +46,26 @@ git pull --ff-only
 | 12以上 | 約1000 CPI相当 |
 
 大きく動かしたあとにゆっくり止める場合も、移動量が小さくなるにつれて608 CPI相当へ戻る。トラックボールが惰性で速く回っている間だけ高速になる。
+
+### DYA Studioのトラックボール設定
+
+- 対象ファームウェア: `lism_right_central_trackball_studio.uf2`
+- DYA Studioへの接続: USBまたはBluetooth
+- `rmouse`: 右ポインターの倍率・向き・Mouse Layer自動切替。既定は1倍、`layer_1`、解除1000ms。
+- `lmouse`: 左ポインターの倍率・向き・Mouse Layer自動切替。既定は1倍、`layer_1`、解除1000ms。
+- `rscroll`: `layer_2`での右スクロール。既定は1/16倍、Y軸スナップ（縦優先）。
+- `lscroll`: `layer_2`での左スクロール。既定は1/16倍、X軸スナップ（横優先）。
+- 軸スナップの既定値はしきい値100、タイムアウト1000ms。
+- PAW3222の608 CPIと608〜1000 CPI相当の可変加速カーブは固定。DYAのポインター倍率は加速後に適用されるため、1未満の倍率で608 CPI相当より低い実効速度にもできる。
+- 設定はランタイム入力プロセッサーに保存される。
+
+主な追加ファイル:
+
+- `snippets/dya-trackball-central/dya-trackball.overlay`
+- `snippets/dya-trackball-central/dya-trackball.conf`
+- `snippets/dya-trackball-central/snippet.yml`
+- `config/west.yml`
+- `build.yaml`
 
 主な実装ファイル:
 
@@ -68,12 +89,12 @@ git pull --ff-only
 右側がCentral、左側がPeripheralの構成。
 
 - 右中央・通常版: `lism_right_central_trackball.uf2`
-- 右中央・ZMK Studio版: `lism_right_central_trackball_studio.uf2`
+- 右中央・ZMK/DYA Studio版: `lism_right_central_trackball_studio.uf2`
 - 左ペリフェラル: `lism_left_peripheral_trackball.uf2`
 
-DYA/ZMK Studioを使う場合、右側にはStudio版を使用する。左側は通常のペリフェラル版を使用する。
+DYA/ZMK Studioを使う場合、右側にはStudio版を使用する。左側は通常のペリフェラル版を使用する。成果物は従来どおり全10種類で、DYAのトラックボール設定は右中央のトラックボールStudio版だけに追加している。
 
-GitHub Actions run #9では、全10ファームウェアのビルドとartifact mergeが成功済み。新しいビルドを取得する場合は、PRまたはActionsの `firmware` artifactをダウンロードする。
+GitHub Actions run #9では、DYA対応追加前の全10ファームウェアのビルドとartifact mergeが成功済み。DYA対応追加後のCIビルドはまだ未実施。新しいビルドを取得する場合は、変更をpushした後のActionsで `firmware` artifactをダウンロードする。
 
 ローカルビルドはリポジトリのREADMEに従い、VS Code Dev ContainersとDocker Desktopを使う。以前のPCでは `west`、Docker、ローカルZMKビルド環境がなかったため、検証はGitHub Actionsを使用した。
 
@@ -123,10 +144,12 @@ PR #1は上記変更をまとめて `main` へ取り込むためのもの。現�
 
 ## 6. 次に行うこと
 
-1. PR #1の内容とCI成功を確認し、問題なければmergeする。
-2. Actions run #9のartifactから、右側へ `lism_right_central_trackball_studio.uf2`、左側へ `lism_left_peripheral_trackball.uf2` を書き込む。
-3. 実機で細かい位置合わせ、大きな移動、停止前の減速、Mouse Layer自動切替、Number Layerスクロールを確認する。
-4. 速度調整が必要なら、`accel-start = <2>`、`accel-full = <12>`、`max-cpi = <1000>` を変更する。
+1. 1秒化とDYA対応のコミットをpushする。
+2. 新しいGitHub Actionsで全10ファームウェアのビルド成功を確認する。
+3. 新しいartifactから、右側へ `lism_right_central_trackball_studio.uf2`、左側へ `lism_left_peripheral_trackball.uf2` を書き込む。
+4. 実機で細かい位置合わせ、大きな移動、停止前の減速、Mouse Layer自動切替を確認する。
+5. Number Layerで右が縦優先、左が横優先のスクロールになることと、DYA Studioから4項目を変更・保存できることを確認する。
+6. 固定の可変加速を調整する場合は、`accel-start = <2>`、`accel-full = <12>`、`max-cpi = <1000>` を変更する。
 
 ## 7. Bluetooth再接続問題について
 

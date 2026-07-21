@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 自作キーボード LisMのファームウェアです。  
-DYA Studio対応版は[dya-studio_zmk-v0.3](https://github.com/4mplelab/zmk-config-LisM/tree/dya-studio_zmk-v0.3)ブランチから取得できます。
+右セントラルのStudio版はDYA Studioに対応し、USBとBluetoothの両方から接続できます。
 
 ## 生成されるファームウェア一覧
 
@@ -17,11 +17,24 @@ DYA Studio対応版は[dya-studio_zmk-v0.3](https://github.com/4mplelab/zmk-conf
 | `lism_right_central_trackball.uf2`            | 右側 セントラル トラックボール         |
 | `lism_right_central_non_trackball_studio.uf2` | 右側 セントラル 非トラックボール (ZMK Studio 対応) |
 | `lism_right_central_4waystick_studio.uf2` | 右側 セントラル 4wayスティック (ZMK Studio 対応) |
-| `lism_right_central_trackball_studio.uf2`     | 右側 セントラル トラックボール (ZMK Studio 対応)   |
+| `lism_right_central_trackball_studio.uf2`     | 右側 セントラル トラックボール (ZMK/DYA Studio 対応) |
 | `settings_reset-seeeduino_xiao_ble-zmk.uf2`   | 設定リセット用                        |
 
-トラックボール版では、トラックボール操作中に Mouse Layer が自動で有効になり、最後の入力から約1.5秒後に解除されます。
+トラックボール版では、トラックボール操作中に Mouse Layer が自動で有効になり、最後の入力から約1秒後に解除されます。
 ポインター速度は小さい動きでは608 CPI相当を維持し、移動量に応じて最大約1000 CPI相当まで滑らかに加速します。
+
+### DYA Studioのトラックボール設定
+
+`lism_right_central_trackball_studio.uf2` では、DYA Studioから次の4項目を変更して保存できます。
+
+| 表示名 | 対象 | 既定値 |
+|---|---|---|
+| `rmouse` | 右トラックボールのポインター倍率・向き・Mouse Layer自動切替 | 1倍、Mouse Layer 1、解除1000ms |
+| `lmouse` | 左トラックボールのポインター倍率・向き・Mouse Layer自動切替 | 1倍、Mouse Layer 1、解除1000ms |
+| `rscroll` | Number Layerでの右トラックボールのスクロール | 1/16倍、縦軸スナップ |
+| `lscroll` | Number Layerでの左トラックボールのスクロール | 1/16倍、横軸スナップ |
+
+ポインター倍率を1未満にすると、センサーの608 CPIより低い実効速度にできます。608〜1000 CPI相当の可変加速カーブ自体は固定で、DYA Studioの倍率はその出力に対して適用されます。Number Layerは `layer_2`、軸スナップの既定値はしきい値100・タイムアウト1000msです。
 
 ## ローカルビルド手順
 
