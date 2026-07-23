@@ -36,7 +36,7 @@ layers:
   - $$mdi:apple-keyboard-option$$
   - $$mdi:pan-up$$
   - {t: '$$mdi:keyboard-space$$', h: Number Layer}
-  - {t: C, h: Mark Layer}
+  - {t: INTERNATIONAL 4, h: Mark Layer}
   - {t: '$$mdi:backspace$$', h: Mark Layer}
   - {t: '$$mdi:keyboard-return$$', h: Mouse Layer}
   - $$mdi:pan-up$$
