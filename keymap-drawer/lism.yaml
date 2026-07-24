@@ -36,8 +36,8 @@ layers:
   - $$mdi:apple-keyboard-option$$
   - $$mdi:pan-up$$
   - {t: '$$mdi:keyboard-space$$', h: Number Layer}
-  - {t: LANGUAGE 1, h: Mark Layer}
-  - {t: '$$mdi:backspace$$', h: Mark Layer}
+  - {t: '$$mdi:keyboard-space$$', h: LANG1}
+  - {t: '$$mdi:backspace$$', h: LANGUAGE 2}
   - {t: '$$mdi:keyboard-return$$', h: Mark Layer}
   - $$mdi:pan-up$$
   - $$mdi:arrow-left-bold$$
@@ -109,37 +109,37 @@ layers:
   - '9'
   - '0'
   - '='
-  - '*'
-  - {t: '4', h: '$$mdi:apple-keyboard-option$$'}
-  - {t: '5', h: '$$mdi:apple-keyboard-shift$$'}
-  - {t: '6', h: '$$mdi:apple-keyboard-command$$'}
-  - '%'
+  - F6
+  - F7
+  - F8
+  - F9
+  - F10
   - '4'
   - '5'
   - '6'
   - +
   - '-'
-  - /
-  - '1'
-  - '2'
-  - '3'
-  - +
+  - F11
+  - $$mdi:arrow-up-bold$$
+  - F12
+  - '%'
+  - ':'
   - '1'
   - '2'
   - '3'
   - ASTRK
   - /
-  - {t: ▽, type: trans}
-  - .
-  - '0'
+  - $$mdi:arrow-left-bold$$
+  - $$mdi:arrow-down-bold$$
+  - $$mdi:arrow-right-bold$$
   - $$mdi:arrow-up-bold$$
   - {type: held}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - $$mdi:arrow-up-bold$$
-  - Sft+Ctl+.
-  - Ctl+^
+  - .
+  - ^
   - $
   - $$mdi:arrow-left-bold$$
   - $$mdi:arrow-down-bold$$
@@ -153,19 +153,19 @@ layers:
   - (
   - )
   - _
+  - (
+  - )
   - '['
-  - '!'
-  - '@'
-  - '#'
-  - $
+  - ']'
+  - \
   - '&emoji'
   - F5
   - '['
   - '-'
   - AT
   - '!'
-  - _
   - ''''
+  - '"'
   - '"'
   - \
   - KP NUMLOCK
@@ -180,12 +180,12 @@ layers:
   - '*'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - '0'
   - {t: ▽, type: trans}
-  - $$mdi:keyboard-space$$
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {type: held}
-  - {t: ▽, type: trans}
-  - {t: '$$mdi:keyboard-return$$', type: enter}
   - {t: ▽, type: trans}
   - ''
   - ''
@@ -252,5 +252,5 @@ combos:
   k: $$mdi:keyboard-tab$$
 - p: [8, 9]
   k: $$mdi:backspace-reverse-outline$$
-- p: [34, 35]
-  k: LANG2
+- p: [36, 37]
+  k: {t: Mouse Layer, h: toggle}
