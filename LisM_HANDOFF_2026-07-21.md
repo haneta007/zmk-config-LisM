@@ -1,6 +1,6 @@
 # LisM ZMK作業 引き継ぎ書
 
-更新日: 2026-07-22
+更新日: 2026-07-24
 
 ## 1. 最初に確認する場所
 
@@ -8,9 +8,10 @@
 - 作業ブランチ: `feat/auto-mouse-layer-trackball`
 - Pull Request: https://github.com/haneta007/zmk-config-LisM/pull/1
 - PR状態: Open、merge可能、未merge
-- 引き継ぎ書作成前の実装HEAD: `742d36b7a4a1bce05f650fa9baa815cfae2354b9`
-- 最新CI: GitHub Actions `Build ZMK firmware` run #9 成功
-- CI URL: https://github.com/haneta007/zmk-config-LisM/actions/runs/29717163234
+- 最新の実装HEAD: `1fb38b8bb01f3335f89df024d27a7b53ab27dbe1`
+- 最新CI: GitHub Actions `Build ZMK firmware` run `30059635094` 成功
+- CI URL: https://github.com/haneta007/zmk-config-LisM/actions/runs/30059635094
+- firmware artifact ID: `8584084868`（全10ファームウェア、未失効）
 
 新PCでの取得手順:
 
@@ -96,7 +97,7 @@ git pull --ff-only
 
 DYA/ZMK Studioを使う場合、右側にはStudio版を使用する。左側は通常のペリフェラル版を使用する。成果物は従来どおり全10種類で、DYAのトラックボール設定は右中央のトラックボールStudio版だけに追加している。
 
-GitHub Actions run #9では、DYA対応追加前の全10ファームウェアのビルドとartifact mergeが成功済み。DYA対応追加後のCIビルドはまだ未実施。新しいビルドを取得する場合は、変更をpushした後のActionsで `firmware` artifactをダウンロードする。
+GitHub Actions run `30059635094` で、DYA対応と右スクロールの優勢軸ロックを含む全10ファームウェアのビルドとartifact mergeが成功済み。新しいビルドを取得する場合は、このrunの `firmware` artifactをダウンロードする。
 
 ローカルビルドはリポジトリのREADMEに従い、VS Code Dev ContainersとDocker Desktopを使う。以前のPCでは `west`、Docker、ローカルZMKビルド環境がなかったため、検証はGitHub Actionsを使用した。
 
@@ -135,6 +136,10 @@ GitHub Actions run #9では、DYA対応追加前の全10ファームウェアの
 作業ブランチ上の主要コミット:
 
 ```text
+1fb38b8 fix: shorten DYA processor labels
+9b48f71 feat: add dominant-axis scroll lock
+28d4117 feat: add DYA trackball runtime controls
+0c10451 docs: add LisM project handoff
 742d36b chore: sync keymap with main
 f93c3d3 feat: add adaptive trackball acceleration
 797d756 feat: set trackball cpi
@@ -146,12 +151,11 @@ PR #1は上記変更をまとめて `main` へ取り込むためのもの。現�
 
 ## 6. 次に行うこと
 
-1. 1秒化とDYA対応のコミットをpushする。
-2. 新しいGitHub Actionsで全10ファームウェアのビルド成功を確認する。
-3. 新しいartifactから、右側へ `lism_right_central_trackball_studio.uf2`、左側へ `lism_left_peripheral_trackball.uf2` を書き込む。
-4. 実機で細かい位置合わせ、大きな移動、停止前の減速、Mouse Layer自動切替を確認する。
-5. Number Layerで右が操作ごとに縦または横へ固定され、左は縦横2軸でスクロールすることと、DYA Studioから4項目を変更・保存できることを確認する。
-6. 固定の可変加速を調整する場合は、`accel-start = <2>`、`accel-full = <12>`、`max-cpi = <1000>` を変更する。
+1. Actions run `30059635094` の `firmware` artifactをダウンロードする。
+2. 右側へ `lism_right_central_trackball_studio.uf2`、左側へ `lism_left_peripheral_trackball.uf2` を書き込む。
+3. 実機で細かい位置合わせ、大きな移動、停止前の減速、Mouse Layer自動切替を確認する。
+4. Number Layerで右が操作ごとに縦または横へ固定され、左は縦横2軸でスクロールすることと、DYA Studioから4項目を変更・保存できることを確認する。
+5. 固定の可変加速を調整する場合は、`accel-start = <2>`、`accel-full = <12>`、`max-cpi = <1000>` を変更する。
 
 ## 7. Bluetooth再接続問題について
 
