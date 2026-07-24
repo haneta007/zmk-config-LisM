@@ -9,7 +9,7 @@
 - Pull Request: https://github.com/haneta007/zmk-config-LisM/pull/1
 - PR状態: Open、merge可能、未merge
 - 最新の実装HEAD: `1fb38b8bb01f3335f89df024d27a7b53ab27dbe1`
-- 最新CI: GitHub Actions `Build ZMK firmware` run `30059635094` 成功
+- 実装HEADの検証CI: GitHub Actions `Build ZMK firmware` run `30059635094` 成功
 - CI URL: https://github.com/haneta007/zmk-config-LisM/actions/runs/30059635094
 - firmware artifact ID: `8584084868`（全10ファームウェア、未失効）
 
