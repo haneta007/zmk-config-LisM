@@ -12,6 +12,13 @@
         accel-full = <12>;
         track-remainders;
     };
+
+    lism_axis_lock: lism_axis_lock {
+        compatible = "lism,input-processor-axis-lock";
+        #input-processor-cells = <0>;
+        decision-threshold = <12>;
+        unlock-timeout-ms = <180>;
+    };
 };
 
 &spi0 {
@@ -47,6 +54,7 @@
     scroller {
         layers = <2>;
         input-processors = 
+            <&lism_axis_lock>,
             <&zip_xy_to_scroll_mapper>,
             <&zip_scroll_scaler 1 16>;
     };

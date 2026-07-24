@@ -5,3 +5,11 @@ config LISM_INPUT_PROCESSOR_POINTER_ACCEL
     help
       Scale relative pointer movement from a base CPI to a maximum effective
       CPI according to the size of each movement event.
+
+config LISM_INPUT_PROCESSOR_AXIS_LOCK
+    bool "LisM dominant-axis lock input processor"
+    default y
+    depends on DT_HAS_LISM_INPUT_PROCESSOR_AXIS_LOCK_ENABLED
+    help
+      Select the dominant pointer axis at the start of a gesture and suppress
+      movement on the other axis until the gesture becomes idle.

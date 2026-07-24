@@ -47,7 +47,7 @@
     rscroll: lism_rscroll {
         compatible = "zmk,input-processor-runtime";
         #input-processor-cells = <0>;
-        processor-label = "rscroll";
+        processor-label = "rscroll2";
         type = <INPUT_EV_REL>;
         x-codes = <INPUT_REL_X>;
         y-codes = <INPUT_REL_Y>;
@@ -56,15 +56,12 @@
         rotation-degrees = <0>;
         track-remainders;
         xy-to-scroll-enabled;
-        axis-snap-mode = <AXIS_SNAP_MODE_Y>;
-        axis-snap-threshold = <100>;
-        axis-snap-timeout-ms = <1000>;
     };
 
     lscroll: lism_lscroll {
         compatible = "zmk,input-processor-runtime";
         #input-processor-cells = <0>;
-        processor-label = "lscroll";
+        processor-label = "lscroll2";
         type = <INPUT_EV_REL>;
         x-codes = <INPUT_REL_X>;
         y-codes = <INPUT_REL_Y>;
@@ -73,9 +70,6 @@
         rotation-degrees = <0>;
         track-remainders;
         xy-to-scroll-enabled;
-        axis-snap-mode = <AXIS_SNAP_MODE_X>;
-        axis-snap-threshold = <100>;
-        axis-snap-timeout-ms = <1000>;
     };
 };
 
@@ -97,6 +91,8 @@
 
     scroller {
         layers = <2>;
-        input-processors = <&rscroll>;
+        input-processors =
+            <&lism_axis_lock>,
+            <&rscroll>;
     };
 };

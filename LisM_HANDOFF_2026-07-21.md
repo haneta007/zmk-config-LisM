@@ -53,9 +53,9 @@ git pull --ff-only
 - DYA Studioへの接続: USBまたはBluetooth
 - `rmouse`: 右ポインターの倍率・向き・Mouse Layer自動切替。既定は1倍、`layer_1`、解除1000ms。
 - `lmouse`: 左ポインターの倍率・向き・Mouse Layer自動切替。既定は1倍、`layer_1`、解除1000ms。
-- `rscroll`: `layer_2`での右スクロール。既定は1/16倍、Y軸スナップ（縦優先）。
-- `lscroll`: `layer_2`での左スクロール。既定は1/16倍、X軸スナップ（横優先）。
-- 軸スナップの既定値はしきい値100、タイムアウト1000ms。
+- `rscroll2`: `layer_2`での右スクロール。既定は1/16倍、ジェスチャー単位の優勢軸ロック。
+- `lscroll2`: `layer_2`での左スクロール。既定は1/16倍、縦横2軸。
+- 右の優勢軸ロックは初動12カウントで縦横を判定し、180ms入力が止まるまで反対軸を破棄する。
 - PAW3222の608 CPIと608〜1000 CPI相当の可変加速カーブは固定。DYAのポインター倍率は加速後に適用されるため、1未満の倍率で608 CPI相当より低い実効速度にもできる。
 - 設定はランタイム入力プロセッサーに保存される。
 
@@ -70,7 +70,9 @@ git pull --ff-only
 主な実装ファイル:
 
 - `src/input_processor_pointer_accel.c`
+- `src/input_processor_axis_lock.c`
 - `dts/bindings/input_processors/lism,input-processor-pointer-accel.yaml`
+- `dts/bindings/input_processors/lism,input-processor-axis-lock.yaml`
 - `snippets/trackball-central/trackball.overlay`
 - `zephyr/module.yml`
 - `CMakeLists.txt`
@@ -148,7 +150,7 @@ PR #1は上記変更をまとめて `main` へ取り込むためのもの。現�
 2. 新しいGitHub Actionsで全10ファームウェアのビルド成功を確認する。
 3. 新しいartifactから、右側へ `lism_right_central_trackball_studio.uf2`、左側へ `lism_left_peripheral_trackball.uf2` を書き込む。
 4. 実機で細かい位置合わせ、大きな移動、停止前の減速、Mouse Layer自動切替を確認する。
-5. Number Layerで右が縦優先、左が横優先のスクロールになることと、DYA Studioから4項目を変更・保存できることを確認する。
+5. Number Layerで右が操作ごとに縦または横へ固定され、左は縦横2軸でスクロールすることと、DYA Studioから4項目を変更・保存できることを確認する。
 6. 固定の可変加速を調整する場合は、`accel-start = <2>`、`accel-full = <12>`、`max-cpi = <1000>` を変更する。
 
 ## 7. Bluetooth再接続問題について
