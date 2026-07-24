@@ -47,7 +47,7 @@
     rscroll: lism_rscroll {
         compatible = "zmk,input-processor-runtime";
         #input-processor-cells = <0>;
-        processor-label = "rscroll2";
+        processor-label = "rscrol2";
         type = <INPUT_EV_REL>;
         x-codes = <INPUT_REL_X>;
         y-codes = <INPUT_REL_Y>;
@@ -61,7 +61,7 @@
     lscroll: lism_lscroll {
         compatible = "zmk,input-processor-runtime";
         #input-processor-cells = <0>;
-        processor-label = "lscroll2";
+        processor-label = "lscrol2";
         type = <INPUT_EV_REL>;
         x-codes = <INPUT_REL_X>;
         y-codes = <INPUT_REL_Y>;
