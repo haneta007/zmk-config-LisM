@@ -36,9 +36,9 @@ layers:
   - $$mdi:apple-keyboard-option$$
   - $$mdi:pan-up$$
   - {t: '$$mdi:keyboard-space$$', h: Number Layer}
-  - {t: '$$mdi:keyboard-space$$', h: LANG1}
-  - {t: '$$mdi:backspace$$', h: LANGUAGE 2}
-  - {t: '$$mdi:keyboard-return$$', h: Mark Layer}
+  - {t: '$$mdi:keyboard-space$$', h: Mark Layer}
+  - {t: '$$mdi:backspace$$', h: Mark Layer}
+  - {t: '$$mdi:keyboard-return$$', h: Mouse Layer}
   - $$mdi:pan-up$$
   - $$mdi:arrow-left-bold$$
   - $$mdi:arrow-down-bold$$
@@ -87,7 +87,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {type: held}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -183,9 +183,9 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - ''
   - ''
@@ -254,3 +254,7 @@ combos:
   k: $$mdi:backspace-reverse-outline$$
 - p: [36, 37]
   k: {t: Mouse Layer, h: toggle}
+- p: [35, 13]
+  k: LANG1
+- p: [36, 16]
+  k: LANG2
