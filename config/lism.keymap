@@ -74,7 +74,7 @@
         };
 
         yazirushi {
-            bindings = <&tog 5>;
+            bindings = <&tog 3>;
             key-positions = <4 3>;
         };
 
@@ -127,11 +127,11 @@
         layer_3 {
             display-name = "Mark Layer";
             bindings = <
-&kp LS(LG(N4))  &kp F4   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp UNDER                    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LEFT_BRACKET   &kp RIGHT_BRACKET  &kp BACKSLASH
-&emoji          &kp F5   &kp LEFT_BRACKET      &kp MINUS              &kp AT                       &kp EXCL              &kp SINGLE_QUOTE       &kp DOUBLE_QUOTES  &kp DOUBLE_QUOTES  &kp BACKSLASH
-&kp KP_NUMLOCK  &kp F11  &kp LEFT_BRACE        &kp RIGHT_BRACE        &none                        &kp QUESTION          &kp PERCENT            &kp CARET          &kp AMPERSAND      &kp ASTERISK
-&trans          &trans   &trans                &trans                 &trans     &trans    &trans  &trans                &trans                 &none              &none              &kp F12
-                         &trans                &trans                 &trans                       &trans                &trans                 &trans
+&kp LS(LG(N4))  &kp F4          &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp UNDER                    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LEFT_BRACKET   &kp RIGHT_BRACKET  &kp BACKSLASH
+&emoji          &kp F5          &kp LEFT_BRACKET      &kp MINUS              &kp AT                       &kp EXCL              &kp SINGLE_QUOTE       &kp DOUBLE_QUOTES  &kp AMPERSAND      &kp BACKSLASH
+&kp KP_NUMLOCK  &kp UP_ARROW    &kp LEFT_BRACE        &kp RIGHT_BRACE        &none                        &kp QUESTION          &kp PERCENT            &kp CARET          &kp UP_ARROW       &kp ASTERISK
+&kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW       &trans                 &trans     &trans    &trans  &trans                &trans                 &kp LEFT_ARROW     &kp DOWN_ARROW     &kp RIGHT_ARROW
+                                &trans                &trans                 &trans                       &trans                &trans                 &trans
             >;
         };
 
