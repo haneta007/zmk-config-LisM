@@ -36,9 +36,9 @@ layers:
   - $$mdi:apple-keyboard-option$$
   - $$mdi:pan-up$$
   - {t: '$$mdi:keyboard-space$$', h: Number Layer}
-  - {t: '$$mdi:keyboard-space$$', h: Mark Layer}
-  - {t: '$$mdi:backspace$$', h: Mark Layer}
-  - {t: '$$mdi:keyboard-return$$', h: Mouse Layer}
+  - {t: '$$mdi:keyboard-space$$', h: LANG2}
+  - {t: '$$mdi:backspace$$', h: LANG1}
+  - {t: '$$mdi:keyboard-return$$', h: Mark Layer}
   - $$mdi:pan-up$$
   - $$mdi:arrow-left-bold$$
   - $$mdi:arrow-down-bold$$
@@ -86,7 +86,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {type: held}
   - {type: held}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -166,30 +166,30 @@ layers:
   - '!'
   - ''''
   - '"'
-  - '"'
+  - '&'
   - \
   - KP NUMLOCK
-  - F11
+  - $$mdi:arrow-up-bold$$
   - '{'
   - '}'
   - ''
   - QUESTION
   - '%'
   - ^
-  - '&'
+  - $$mdi:arrow-up-bold$$
   - '*'
-  - {t: ▽, type: trans}
+  - $$mdi:arrow-left-bold$$
+  - $$mdi:arrow-down-bold$$
+  - $$mdi:arrow-right-bold$$
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {type: held}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - ''
-  - ''
-  - F12
+  - $$mdi:arrow-left-bold$$
+  - $$mdi:arrow-down-bold$$
+  - $$mdi:arrow-right-bold$$
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -253,8 +253,10 @@ combos:
 - p: [8, 9]
   k: $$mdi:backspace-reverse-outline$$
 - p: [36, 37]
-  k: {t: Mouse Layer, h: toggle}
-- p: [35, 13]
-  k: LANG1
-- p: [36, 16]
-  k: LANG2
+  k: Mouse Layer
+- p: [34, 35]
+  k: Mark Layer
+- p: [4, 3]
+  k: {t: Mark Layer, h: toggle}
+- p: [5, 6]
+  k: $$mdi:apple-keyboard-shift$$
