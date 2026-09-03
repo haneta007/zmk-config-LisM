@@ -170,9 +170,9 @@ layers:
   - \
   - KP NUMLOCK
   - $$mdi:arrow-up-bold$$
-  - '{'
-  - '}'
-  - ''
+  - Meh+F1
+  - Meh+F2
+  - Meh+F3
   - QUESTION
   - '%'
   - ^
