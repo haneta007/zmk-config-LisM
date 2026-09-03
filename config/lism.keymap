@@ -63,9 +63,24 @@
             key-positions = <8 9>;
         };
 
-        muhenkan {
-            bindings = <&kp INTERNATIONAL_5>;
+        mouse {
+            bindings = <&mo 1>;
+            key-positions = <36 37>;
+        };
+
+        layer3 {
+            bindings = <&mo 3>;
             key-positions = <34 35>;
+        };
+
+        yazirushi {
+            bindings = <&tog 3>;
+            key-positions = <4 3>;
+        };
+
+        shift {
+            bindings = <&kp LEFT_SHIFT>;
+            key-positions = <5 6>;
         };
     };
 
@@ -75,11 +90,11 @@
         default_layer {
             display-name = "Default Layer";
             bindings = <
-&kp Q             &kp W         &kp E           &kp R           &kp T                                                      &kp Y           &kp U           &kp I            &kp O    &kp P
-&kp A             &kp S         &kp D           &kp F           &kp G                                                      &kp H           &kp J           &kp K            &kp L    &kp SEMI
-&mt LEFT_SHIFT Z  &kp X         &kp C           &kp V           &kp B                                                      &kp N           &kp M           &kp COMMA        &kp DOT  &kp SLASH
-&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT    &msc SCRL_UP    &lt 2 SPACE      &lt 3 INTERNATIONAL_4    &lt 3 BACKSPACE  &lt 1 ENTER     &msc SCRL_UP    &kp F2           &kp F5   &lt 4 F12
-                                &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT                                            &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT
+&kp Q             &kp W         &kp E           &kp R           &kp T                                                    &kp Y           &kp U           &kp I            &kp O             &kp P
+&kp A             &kp S         &kp D           &kp F           &kp G                                                    &kp H           &kp J           &kp K            &kp L             &kp SEMI
+&mt LEFT_SHIFT Z  &kp X         &kp C           &kp V           &kp B                                                    &kp N           &kp M           &kp COMMA        &mt UP_ARROW DOT  &kp SLASH
+&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT    &msc SCRL_UP    &lt 2 SPACE      &mt LANG2 SPACE    &mt LANG1 BACKSPACE  &lt 3 ENTER     &msc SCRL_UP    &kp LEFT         &kp DOWN          &lt 4 RIGHT
+                                &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT                                          &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT
             >;
 
             sensor-bindings = <&encoder_msc SCRL_UP SCRL_DOWN>;
@@ -88,22 +103,22 @@
         layer_1 {
             display-name = "Mouse Layer";
             bindings = <
-&trans    &trans  &trans  &trans  &trans                    &kp SPACE     &kp RG(LEFT)  &kp RG(RIGHT)  &mkp MB3  &msc SCRL_UP
-&mkp MB5  &trans  &trans  &trans  &trans                    &kp LG(UP)    &mkp MB1      &mkp MB3       &mkp MB2  &msc SCRL_DOWN
-&mkp MB4  &trans  &trans  &trans  &trans                    &kp LG(DOWN)  &mkp MB4      &mkp MB5       &kp UP    &trans
-&trans    &trans  &trans  &trans  &trans  &trans    &trans  &trans        &trans        &kp LEFT       &kp DOWN  &kp RIGHT
-                  &trans  &trans  &trans                    &trans        &trans        &trans
+&trans  &trans  &trans  &trans  &trans                    &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans                    &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
+&trans  &trans  &trans  &trans  &trans                    &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans    &trans    &trans    &trans
+                &trans  &trans  &trans                    &trans  &trans    &trans
             >;
         };
 
         layer_2 {
             display-name = "Number Layer";
             bindings = <
-&trans        &kp NUMBER_7       &kp NUMBER_8         &kp NUMBER_9       &kp EQUAL                          &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9     &kp NUMBER_0   &kp EQUAL
-&kp ASTERISK  &mt LALT NUMBER_4  &mt LSHIFT NUMBER_5  &mt LGUI NUMBER_6  &mt LCTRL MINUS                    &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6     &kp PLUS       &kp MINUS
-&kp SLASH     &kp NUMBER_1       &kp NUMBER_2         &kp NUMBER_3       &kp PLUS                           &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3     &kp ASTRK      &kp SLASH
-&trans        &kp DOT            &kp NUMBER_0         &kp UP             &kp LANG2        &trans    &trans  &kp RS(SEMI)  &kp UP        &kp RS(RC(DOT))  &kp RC(CARET)  &kp F2
-                                 &kp LEFT             &kp DOWN           &kp RIGHT                          &kp LEFT      &kp DOWN      &kp RIGHT
+&kp F1    &kp F2    &kp F3     &kp F4       &kp F5                       &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp NUMBER_0  &kp EQUAL
+&kp F6    &kp F7    &kp F8     &kp F9       &kp F10                      &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PLUS      &kp MINUS
+&kp F11   &kp UP    &kp F12    &kp PERCENT  &kp COLON                    &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp ASTRK     &kp SLASH
+&kp LEFT  &kp DOWN  &kp RIGHT  &kp UP       &trans     &trans    &trans  &trans        &kp UP        &kp DOT       &kp CARET     &kp DOLLAR
+                    &kp LEFT   &kp DOWN     &kp RIGHT                    &kp LEFT      &kp DOWN      &kp RIGHT
             >;
 
             sensor-bindings = <&encoder_kp C_VOL_UP C_VOL_DN>;
@@ -112,11 +127,11 @@
         layer_3 {
             display-name = "Mark Layer";
             bindings = <
-&kp LS(LG(N4))  &kp F4   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp UNDER                    &kp LEFT_BRACKET  &kp EXCLAMATION  &kp AT_SIGN       &kp HASH           &kp DOLLAR
-&emoji          &kp F5   &kp LEFT_BRACKET      &kp MINUS              &kp AT                       &kp EXCL          &kp UNDER        &kp SINGLE_QUOTE  &kp DOUBLE_QUOTES  &kp BACKSLASH
-&kp KP_NUMLOCK  &kp F11  &kp LEFT_BRACE        &kp RIGHT_BRACE        &none                        &kp QUESTION      &kp PERCENT      &kp CARET         &kp AMPERSAND      &kp ASTERISK
-&trans          &trans   &kp NUMBER_0          &trans                 &kp SPACE  &trans    &trans  &kp ENTER         &trans           &none             &none              &kp F12
-                         &trans                &trans                 &trans                       &trans            &trans           &trans
+&kp LS(LG(N4))  &kp F4          &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp UNDER                             &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LEFT_BRACKET   &kp RIGHT_BRACKET  &kp BACKSLASH
+&emoji          &kp F5          &kp LEFT_BRACKET      &kp MINUS              &kp AT                                &kp EXCL              &kp SINGLE_QUOTE       &kp DOUBLE_QUOTES  &kp AMPERSAND      &kp BACKSLASH
+&kp KP_NUMLOCK  &kp UP_ARROW    &kp LS(LA(LC(F1)))    &kp LA(LS(LC(F2)))     &kp LS(LA(LC(F3)))                    &kp QUESTION          &kp PERCENT            &kp CARET          &kp UP_ARROW       &kp ASTERISK
+&kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW       &trans                 &trans              &trans    &trans  &trans                &trans                 &kp LEFT_ARROW     &kp DOWN_ARROW     &kp RIGHT_ARROW
+                                &trans                &trans                 &trans                                &trans                &trans                 &trans
             >;
         };
 
@@ -135,11 +150,11 @@
             status = "reserved";
             display-name = "Brank Layer";
             bindings = <
-&trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans                    &trans  &trans  &trans
+&trans          &trans          &trans           &trans  &trans                    &trans  &trans  &trans          &trans          &trans
+&trans          &trans          &trans           &trans  &trans                    &trans  &trans  &trans          &trans          &trans
+&trans          &kp UP_ARROW    &trans           &trans  &trans                    &trans  &trans  &trans          &kp UP_ARROW    &trans
+&kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans  &trans  &trans    &trans  &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
+                                &trans           &trans  &trans                    &trans  &trans  &trans
             >;
         };
 

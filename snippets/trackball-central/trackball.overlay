@@ -2,6 +2,23 @@
     chosen {
         zmk,kscan = &kscan1;
     };
+
+    lism_pointer_accel: lism_pointer_accel {
+        compatible = "lism,input-processor-pointer-accel";
+        #input-processor-cells = <0>;
+        base-cpi = <608>;
+        max-cpi = <1000>;
+        accel-start = <2>;
+        accel-full = <12>;
+        track-remainders;
+    };
+
+    lism_axis_lock: lism_axis_lock {
+        compatible = "lism,input-processor-axis-lock";
+        #input-processor-cells = <0>;
+        decision-threshold = <12>;
+        unlock-timeout-ms = <180>;
+    };
 };
 
 &spi0 {
@@ -12,6 +29,7 @@
         compatible = "pixart,paw3222";
         reg = <0>;
         spi-max-frequency = <2000000>;
+        res-cpi = <608>;
         irq-gpios = <&xiao_d 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     };
 };
@@ -19,6 +37,9 @@
 // ペリフェラル（split経由）のリスナーを有効化
 &peripheral_listener {
     status = "okay";
+    input-processors =
+        <&zip_temp_layer 1 1000>,
+        <&lism_pointer_accel>;
 };
 
 // セントラルのリスナーを有効化し、deviceを紐付け
@@ -26,11 +47,15 @@
     status = "okay";
     device = <&trackball_central>;
     input-processors = 
+        <&zip_temp_layer 1 1000>,
+        <&lism_pointer_accel>,
         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
 
     scroller {
         layers = <2>;
         input-processors = 
+            <&lism_axis_lock>,
+            <&zip_xy_transform INPUT_TRANSFORM_X_INVERT>,
             <&zip_xy_to_scroll_mapper>,
             <&zip_scroll_scaler 1 16>;
     };

@@ -1,0 +1,110 @@
+#include <dt-bindings/zmk/runtime_input_processor.h>
+#include <input/processors/runtime-input-processor.dtsi>
+
+/ {
+    // Share one temp-layer state and timeout across both trackballs.
+    amouse: lism_amouse {
+        compatible = "zmk,input-processor-runtime";
+        #input-processor-cells = <0>;
+        processor-label = "amouse";
+        type = <INPUT_EV_REL>;
+        x-codes = <INPUT_REL_X>;
+        y-codes = <INPUT_REL_Y>;
+        scale-multiplier = <1>;
+        scale-divisor = <1>;
+        rotation-degrees = <0>;
+        track-remainders;
+        temp-layer-enabled;
+        temp-layer = <1>;
+        temp-layer-activation-delay-ms = <0>;
+        temp-layer-deactivation-delay-ms = <1000>;
+        temp-layer-transparent-behavior = <&trans>;
+        temp-layer-kp-behavior = <&kp>;
+        temp-layer-keep-keycodes = <LEFT_CONTROL LEFT_SHIFT LEFT_ALT LEFT_GUI RIGHT_CONTROL RIGHT_SHIFT RIGHT_ALT RIGHT_GUI>;
+    };
+
+    rmouse: lism_rmouse {
+        compatible = "zmk,input-processor-runtime";
+        #input-processor-cells = <0>;
+        processor-label = "rmouse2";
+        type = <INPUT_EV_REL>;
+        x-codes = <INPUT_REL_X>;
+        y-codes = <INPUT_REL_Y>;
+        scale-multiplier = <1>;
+        scale-divisor = <1>;
+        rotation-degrees = <0>;
+        track-remainders;
+        x-invert;
+        y-invert;
+    };
+
+    lmouse: lism_lmouse {
+        compatible = "zmk,input-processor-runtime";
+        #input-processor-cells = <0>;
+        processor-label = "lmouse2";
+        type = <INPUT_EV_REL>;
+        x-codes = <INPUT_REL_X>;
+        y-codes = <INPUT_REL_Y>;
+        scale-multiplier = <1>;
+        scale-divisor = <1>;
+        rotation-degrees = <0>;
+        track-remainders;
+    };
+
+    rscroll: lism_rscroll {
+        compatible = "zmk,input-processor-runtime";
+        #input-processor-cells = <0>;
+        processor-label = "rscrol2";
+        type = <INPUT_EV_REL>;
+        x-codes = <INPUT_REL_X>;
+        y-codes = <INPUT_REL_Y>;
+        scale-multiplier = <1>;
+        scale-divisor = <16>;
+        rotation-degrees = <0>;
+        track-remainders;
+        xy-to-scroll-enabled;
+        x-invert;
+    };
+
+    lscroll: lism_lscroll {
+        compatible = "zmk,input-processor-runtime";
+        #input-processor-cells = <0>;
+        processor-label = "lscrol2";
+        type = <INPUT_EV_REL>;
+        x-codes = <INPUT_REL_X>;
+        y-codes = <INPUT_REL_Y>;
+        scale-multiplier = <1>;
+        scale-divisor = <16>;
+        rotation-degrees = <0>;
+        track-remainders;
+        xy-to-scroll-enabled;
+        x-invert;
+        y-invert;
+    };
+};
+
+&peripheral_listener {
+    input-processors =
+        <&lism_pointer_accel>,
+        <&amouse>,
+        <&lmouse>;
+
+    scroller {
+        layers = <2>;
+        input-processors = <&lscroll>;
+    };
+};
+
+&central_listener {
+    input-processors =
+        <&lism_pointer_accel>,
+        <&amouse>,
+        <&rmouse>;
+
+    scroller {
+        layers = <2>;
+        input-processors =
+            <&lism_axis_lock>,
+            <&rscroll>;
+    };
+};
