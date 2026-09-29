@@ -30,6 +30,16 @@
     };
 
     behaviors {
+        bs_lang1: backspace_lang1 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <300>;
+            quick-tap-ms = <300>;
+            bindings = <&kp>, <&kp>;
+            display-name = "Backspace-LANG1";
+        };
+
         encoder_msc: sensor_rotate_msc {
             compatible = "zmk,behavior-sensor-rotate-var";
             #sensor-binding-cells = <2>;
@@ -93,7 +103,7 @@
 &kp Q             &kp W         &kp E           &kp R           &kp T                                                    &kp Y           &kp U           &kp I            &kp O             &kp P
 &kp A             &kp S         &kp D           &kp F           &kp G                                                    &kp H           &kp J           &kp K            &kp L             &kp SEMI
 &mt LEFT_SHIFT Z  &kp X         &kp C           &kp V           &kp B                                                    &kp N           &kp M           &kp COMMA        &mt UP_ARROW DOT  &kp SLASH
-&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT    &msc SCRL_UP    &lt 2 SPACE      &mt LANG2 SPACE    &mt LANG1 BACKSPACE  &lt 3 ENTER     &msc SCRL_UP    &kp LEFT         &kp DOWN          &lt 4 RIGHT
+&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT    &msc SCRL_UP    &lt 2 SPACE      &mt LANG2 SPACE    &bs_lang1 LANG1 BACKSPACE  &lt 3 ENTER     &msc SCRL_UP    &kp LEFT         &kp DOWN          &lt 4 RIGHT
                                 &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT                                          &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT
             >;
 
