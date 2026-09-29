@@ -1,0 +1,16 @@
+description: LisM input processor for gesture-based dominant-axis locking
+
+compatible: "lism,input-processor-axis-lock"
+
+include: ip_zero_param.yaml
+
+properties:
+  decision-threshold:
+    type: int
+    required: true
+    description: Total absolute X/Y movement required before selecting an axis
+
+  unlock-timeout-ms:
+    type: int
+    required: true
+    description: Idle time in milliseconds before selecting a new axis

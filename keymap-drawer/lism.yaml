@@ -29,20 +29,20 @@ layers:
   - N
   - M
   - ','
-  - .
+  - {t: ., h: '$$mdi:arrow-up-bold$$'}
   - /
   - $$mdi:apple-keyboard-control$$
   - LEFT WIN
   - $$mdi:apple-keyboard-option$$
   - $$mdi:pan-up$$
   - {t: '$$mdi:keyboard-space$$', h: Number Layer}
-  - {t: INTERNATIONAL 4, h: Mark Layer}
-  - {t: '$$mdi:backspace$$', h: Mark Layer}
-  - {t: '$$mdi:keyboard-return$$', h: Mouse Layer}
+  - {t: '$$mdi:keyboard-space$$', h: LANG2}
+  - {t: '$$mdi:backspace$$', h: LANG1}
+  - {t: '$$mdi:keyboard-return$$', h: Mark Layer}
   - $$mdi:pan-up$$
-  - F2
-  - F5
-  - {t: F12, h: Device Layer}
+  - $$mdi:arrow-left-bold$$
+  - $$mdi:arrow-down-bold$$
+  - {t: '$$mdi:arrow-right-bold$$', h: Device Layer}
   - $$mdi:pan-left$$
   - $$mdi:pan-down$$
   - $$mdi:pan-right$$
@@ -55,30 +55,29 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - $$mdi:keyboard-space$$
-  - $$mdi:page-previous-outline$$
-  - $$mdi:page-next-outline$$
-  - $$mdi:mouse-scroll-wheel$$
-  - $$mdi:pan-up$$
-  - '&mkp MB5'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - $$mdi:format-vertical-align-top$$
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - $$mdi:mouse-left-click-outline$$
   - $$mdi:mouse-scroll-wheel$$
   - $$mdi:mouse-right-click-outline$$
-  - $$mdi:pan-down$$
-  - '&mkp MB4'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - $$mdi:format-vertical-align-bottom$$
-  - '&mkp MB4'
-  - '&mkp MB5'
-  - $$mdi:arrow-up-bold$$
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -88,10 +87,11 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {type: held}
+  - {type: held}
   - {t: ▽, type: trans}
-  - $$mdi:arrow-left-bold$$
-  - $$mdi:arrow-down-bold$$
-  - $$mdi:arrow-right-bold$$
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -99,48 +99,48 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   Number Layer:
-  - {t: ▽, type: trans}
-  - '7'
-  - '8'
-  - '9'
-  - '='
+  - F1
+  - F2
+  - F3
+  - F4
+  - F5
   - '7'
   - '8'
   - '9'
   - '0'
   - '='
-  - '*'
-  - {t: '4', h: '$$mdi:apple-keyboard-option$$'}
-  - {t: '5', h: '$$mdi:apple-keyboard-shift$$'}
-  - {t: '6', h: '$$mdi:apple-keyboard-command$$'}
-  - {t: '-', h: '$$mdi:apple-keyboard-control$$'}
+  - F6
+  - F7
+  - F8
+  - F9
+  - F10
   - '4'
   - '5'
   - '6'
   - +
   - '-'
-  - /
-  - '1'
-  - '2'
-  - '3'
-  - +
+  - F11
+  - $$mdi:arrow-up-bold$$
+  - F12
+  - '%'
+  - ':'
   - '1'
   - '2'
   - '3'
   - ASTRK
   - /
+  - $$mdi:arrow-left-bold$$
+  - $$mdi:arrow-down-bold$$
+  - $$mdi:arrow-right-bold$$
+  - $$mdi:arrow-up-bold$$
+  - {type: held}
   - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - $$mdi:arrow-up-bold$$
   - .
-  - '0'
-  - $$mdi:arrow-up-bold$$
-  - {t: LANG2, type: held}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - Sft+SEMI
-  - $$mdi:arrow-up-bold$$
-  - Sft+Ctl+.
-  - Ctl+^
-  - F2
+  - ^
+  - $
   - $$mdi:arrow-left-bold$$
   - $$mdi:arrow-down-bold$$
   - $$mdi:arrow-right-bold$$
@@ -153,43 +153,43 @@ layers:
   - (
   - )
   - _
+  - (
+  - )
   - '['
-  - '!'
-  - '@'
-  - '#'
-  - $
+  - ']'
+  - \
   - '&emoji'
   - F5
   - '['
   - '-'
   - AT
   - '!'
-  - _
   - ''''
   - '"'
+  - '&'
   - \
   - KP NUMLOCK
-  - F11
-  - '{'
-  - '}'
-  - ''
+  - $$mdi:arrow-up-bold$$
+  - Meh+F1
+  - Meh+F2
+  - Meh+F3
   - QUESTION
   - '%'
   - ^
-  - '&'
+  - $$mdi:arrow-up-bold$$
   - '*'
+  - $$mdi:arrow-left-bold$$
+  - $$mdi:arrow-down-bold$$
+  - $$mdi:arrow-right-bold$$
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - '0'
   - {t: ▽, type: trans}
-  - $$mdi:keyboard-space$$
+  - {t: ▽, type: trans}
   - {type: held}
   - {t: ▽, type: trans}
-  - {t: '$$mdi:keyboard-return$$', type: enter}
-  - {t: ▽, type: trans}
-  - ''
-  - ''
-  - F12
+  - $$mdi:arrow-left-bold$$
+  - $$mdi:arrow-down-bold$$
+  - $$mdi:arrow-right-bold$$
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -252,5 +252,11 @@ combos:
   k: $$mdi:keyboard-tab$$
 - p: [8, 9]
   k: $$mdi:backspace-reverse-outline$$
+- p: [36, 37]
+  k: Mouse Layer
 - p: [34, 35]
-  k: INTERNATIONAL 5
+  k: Mark Layer
+- p: [4, 3]
+  k: {t: Mark Layer, h: toggle}
+- p: [5, 6]
+  k: $$mdi:apple-keyboard-shift$$
