@@ -39,6 +39,22 @@
 
 ポインター倍率を1未満にすると、センサーの608 CPIより低い実効速度にできます。608〜1000 CPI相当の可変加速カーブ自体は固定で、DYA Studioの倍率はその出力に対して適用されます。Number Layerは `layer_2` です。右スクロールは初動12カウントで縦横の優勢軸を選び、180ms入力が止まるまで反対軸を破棄します。左スクロールは縦横の両方をそのまま使用します。既定の軸反転は左右それぞれの取り付け向きを補正し、トラックボールを転がした方向とスクロール方向を一致させます。
 
+## Keymap Editorで編集してUF2を取得する
+
+1. [Keymap Editor](https://nickcoutsos.github.io/keymap-editor/) でGitHubへ接続し、`haneta007/zmk-config-LisM` の `feat/auto-mouse-layer-trackball` ブランチと `config/lism.keymap` を選びます。
+2. キーマップを編集して保存（GitHubへコミット）します。このブランチと `main` では、ビルド対象ファイルの変更時に `Build ZMK firmware` が自動実行されます。他のPRも引き続き検証します。
+3. 保存したコミットのビルド完了を待ち、Editorのビルド／ファームウェア取得リンクからダウンロード先へ進みます。リンクが表示されない場合は [GitHub Actions](https://github.com/haneta007/zmk-config-LisM/actions/workflows/build.yml) を開き、対象ブランチ・保存したコミットの実行を選びます。
+4. 成功した実行の **Artifacts** にある `firmware` をダウンロードし、ZIPを展開します。取得にはGitHubへのログインが必要です。承認待ちや失敗した実行ではなく、保存したコミットと一致する成功済み実行を使ってください。
+5. 右側には `lism_right_central_trackball_studio.uf2`、左側には `lism_left_peripheral_trackball.uf2` を使用します。ダウンロードとキーボードへの書き込みは手動です。PC常駐タスクは不要です。
+
+自動実行が起動しない場合は、Actionsの **Run workflow** で対象ブランチを選んで手動実行できます。
+
+### Backspaceの二回押し・二回目保持
+
+現在のBackspaceは `&lt 3 BACKSPACE` です。短押しはBackspace、単独長押しはレイヤー3になります。`&lt` の `quick-tap-ms = <300>` により、一回目を短押しして離し、最初の押下から300ms以内に二回目を押して保持するとBackspaceを押し続けます。連続削除の開始時間と速度はPC側のキーリピート設定に従います。300msを超えてから押し直した場合は通常の短押し／長押し判定になります。
+
+Keymap Editorで再編集するときも、このキーの `&lt 3 BACKSPACE` と `&lt` の `quick-tap-ms = <300>` を維持してください。
+
 ## ローカルビルド手順
 
 GitHub Actionsでのビルドは毎回2分-3分かかりますが、ローカル環境では40秒〜1分で完了します。(PCスペックによって前後します)  
