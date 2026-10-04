@@ -43,7 +43,7 @@
 
 1. [Keymap Editor](https://nickcoutsos.github.io/keymap-editor/) でGitHubへ接続し、`haneta007/zmk-config-LisM` の `feat/auto-mouse-layer-trackball` ブランチと `config/lism.keymap` を選びます。
 2. キーマップを編集して保存（GitHubへコミット）します。このブランチと `main` では、ビルド対象ファイルの変更時に `Build ZMK firmware` が自動実行されます。他のPRも引き続き検証します。
-3. 保存したコミットのビルド完了を待ち、Editorのビルド／ファームウェア取得リンクからダウンロード先へ進みます。リンクが表示されない場合は [GitHub Actions](https://github.com/haneta007/zmk-config-LisM/actions/workflows/build.yml) を開き、対象ブランチ・保存したコミットの実行を選びます。
+3. 保存したコミットのビルド完了を待ち、Editorのビルド／ファームウェア取得リンクからダウンロード先へ進みます。リンクが表示されない場合や、重複回避でスキップされたPR実行（`skipped`）を指す場合は [GitHub Actions](https://github.com/haneta007/zmk-config-LisM/actions/workflows/build.yml) を開き、対象ブランチ・保存したコミットの成功した `push` 実行を選びます。EditorのLatest表示が失敗アイコンでも、同じコミットのpush実行が成功していればそちらのUF2を使用できます。
 4. 成功した実行の **Artifacts** にある `firmware` をダウンロードし、ZIPを展開します。取得にはGitHubへのログインが必要です。承認待ちや失敗した実行ではなく、保存したコミットと一致する成功済み実行を使ってください。
 5. 右側には `lism_right_central_trackball_studio.uf2`、左側には `lism_left_peripheral_trackball.uf2` を使用します。ダウンロードとキーボードへの書き込みは手動です。PC常駐タスクは不要です。
 
