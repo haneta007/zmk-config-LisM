@@ -2,21 +2,36 @@ name: Build ZMK firmware
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ main, feat/auto-mouse-layer-trackball ]
     paths:
       - '.github/workflows/build.yml'
+      - 'CMakeLists.txt'
+      - 'Kconfig'
       - 'boards/**'
       - 'config/**'
+      - 'dts/**'
       - 'snippets/**'
+      - 'src/**'
+      - 'zephyr/**'
       - 'build.yaml'
   pull_request:
     paths:
       - '.github/workflows/build.yml'
+      - 'CMakeLists.txt'
+      - 'Kconfig'
       - 'boards/**'
       - 'config/**'
+      - 'dts/**'
       - 'snippets/**'
+      - 'src/**'
+      - 'zephyr/**'
       - 'build.yaml'
 
 jobs:
   build:
+    # This same-repository branch is built on push; keep PR builds for other branches and forks.
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.head.repo.full_name != github.repository ||
+      github.head_ref != 'feat/auto-mouse-layer-trackball'
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3.0

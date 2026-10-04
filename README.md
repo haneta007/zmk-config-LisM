@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 自作キーボード LisMのファームウェアです。  
-DYA Studio対応版は[dya-studio_zmk-v0.3](https://github.com/4mplelab/zmk-config-LisM/tree/dya-studio_zmk-v0.3)ブランチから取得できます。
+右セントラルのStudio版はDYA Studioに対応し、USBとBluetoothの両方から接続できます。
 
 ## 生成されるファームウェア一覧
 
@@ -17,8 +17,43 @@ DYA Studio対応版は[dya-studio_zmk-v0.3](https://github.com/4mplelab/zmk-conf
 | `lism_right_central_trackball.uf2`            | 右側 セントラル トラックボール         |
 | `lism_right_central_non_trackball_studio.uf2` | 右側 セントラル 非トラックボール (ZMK Studio 対応) |
 | `lism_right_central_4waystick_studio.uf2` | 右側 セントラル 4wayスティック (ZMK Studio 対応) |
-| `lism_right_central_trackball_studio.uf2`     | 右側 セントラル トラックボール (ZMK Studio 対応)   |
+| `lism_right_central_trackball_studio.uf2`     | 右側 セントラル トラックボール (ZMK/DYA Studio 対応) |
 | `settings_reset-seeeduino_xiao_ble-zmk.uf2`   | 設定リセット用                        |
+
+トラックボール版では、トラックボール操作中に Mouse Layer が自動で有効になり、最後の入力から約1秒後に解除されます。
+ポインター速度は小さい動きでは608 CPI相当を維持し、移動量に応じて最大約1000 CPI相当まで滑らかに加速します。
+
+### DYA Studioのトラックボール設定
+
+`lism_right_central_trackball_studio.uf2` では、DYA Studioから次の5項目を変更して保存できます。
+
+| 表示名 | 対象 | 既定値 |
+|---|---|---|
+| `amouse` | 左右共通のMouse Layer自動切替 | Mouse Layer 1、解除1000ms |
+| `rmouse2` | 右トラックボールのポインター倍率・向き | 1倍、X/Y反転 |
+| `lmouse2` | 左トラックボールのポインター倍率・向き | 1倍、軸反転なし |
+| `rscrol2` | Number Layerでの右トラックボールのスクロール | 1/16倍、ジェスチャー単位の優勢軸ロック、X反転 |
+| `lscrol2` | Number Layerでの左トラックボールのスクロール | 1/16倍、縦横2軸、X/Y反転 |
+
+左右が同じ `amouse` の状態と解除タイマーを共有するため、片側のタイマーがもう片側のMouse Layerを解除する競合を防ぎます。旧版の保存設定と分離するため、ポインター表示名は `rmouse` / `lmouse` から `rmouse2` / `lmouse2` に変更されています。旧表示名で変更していた倍率や向きは、新表示名で再設定してください。
+
+ポインター倍率を1未満にすると、センサーの608 CPIより低い実効速度にできます。608〜1000 CPI相当の可変加速カーブ自体は固定で、DYA Studioの倍率はその出力に対して適用されます。Number Layerは `layer_2` です。右スクロールは初動12カウントで縦横の優勢軸を選び、180ms入力が止まるまで反対軸を破棄します。左スクロールは縦横の両方をそのまま使用します。既定の軸反転は左右それぞれの取り付け向きを補正し、トラックボールを転がした方向とスクロール方向を一致させます。
+
+## Keymap Editorで編集してUF2を取得する
+
+1. [Keymap Editor](https://nickcoutsos.github.io/keymap-editor/) でGitHubへ接続し、`haneta007/zmk-config-LisM` の `feat/auto-mouse-layer-trackball` ブランチと `config/lism.keymap` を選びます。
+2. キーマップを編集して保存（GitHubへコミット）します。このブランチと `main` では、ビルド対象ファイルの変更時に `Build ZMK firmware` が自動実行されます。他のPRも引き続き検証します。
+3. 保存したコミットのビルド完了を待ち、Editorのビルド／ファームウェア取得リンクからダウンロード先へ進みます。リンクが表示されない場合や、重複回避でスキップされたPR実行（`skipped`）を指す場合は [GitHub Actions](https://github.com/haneta007/zmk-config-LisM/actions/workflows/build.yml) を開き、対象ブランチ・保存したコミットの成功した `push` 実行を選びます。EditorのLatest表示が失敗アイコンでも、同じコミットのpush実行が成功していればそちらのUF2を使用できます。
+4. 成功した実行の **Artifacts** にある `firmware` をダウンロードし、ZIPを展開します。取得にはGitHubへのログインが必要です。承認待ちや失敗した実行ではなく、保存したコミットと一致する成功済み実行を使ってください。
+5. 右側には `lism_right_central_trackball_studio.uf2`、左側には `lism_left_peripheral_trackball.uf2` を使用します。ダウンロードとキーボードへの書き込みは手動です。PC常駐タスクは不要です。
+
+自動実行が起動しない場合は、Actionsの **Run workflow** で対象ブランチを選んで手動実行できます。
+
+### Backspaceの二回押し・二回目保持
+
+現在のBackspaceは `&lt 3 BACKSPACE` です。短押しはBackspace、単独長押しはレイヤー3になります。`&lt` の `quick-tap-ms = <300>` により、一回目を短押しして離し、最初の押下から300ms以内に二回目を押して保持するとBackspaceを押し続けます。連続削除の開始時間と速度はPC側のキーリピート設定に従います。300msを超えてから押し直した場合は通常の短押し／長押し判定になります。
+
+Keymap Editorで再編集するときも、このキーの `&lt 3 BACKSPACE` と `&lt` の `quick-tap-ms = <300>` を維持してください。
 
 ## ローカルビルド手順
 

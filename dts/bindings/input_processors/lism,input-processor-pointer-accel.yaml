@@ -1,0 +1,26 @@
+description: LisM input processor for movement-dependent pointer acceleration
+
+compatible: "lism,input-processor-pointer-accel"
+
+include: ip_zero_param.yaml
+
+properties:
+  base-cpi:
+    type: int
+    required: true
+    description: Effective CPI used for movement at or below accel-start
+
+  max-cpi:
+    type: int
+    required: true
+    description: Effective CPI used for movement at or above accel-full
+
+  accel-start:
+    type: int
+    required: true
+    description: Absolute event value where acceleration starts
+
+  accel-full:
+    type: int
+    required: true
+    description: Absolute event value where maximum acceleration is reached
